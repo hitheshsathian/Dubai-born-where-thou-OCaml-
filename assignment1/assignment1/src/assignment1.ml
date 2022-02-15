@@ -112,14 +112,14 @@ let rec sum lst =
 
 let additivePersistence n =
   let count = 0 in
-  let rec splice (n,count) = if n>9 then splice(sum(digitsOfInt(n)), count+1) else
+  let rec splice (n,count) = if n > 9 then splice(sum(digitsOfInt(n)), count + 1) else
     count in splice(n,count);;
 assert (additivePersistence 9876 = 2);;
 
 
 let digitalRoot n =
   let count = 0 in
-  let rec splice (n,count) = if n>9 then splice(sum(digitsOfInt(n)), count+1) else
+  let rec splice (n,count) = if n > 9 then splice(sum(digitsOfInt(n)), count + 1) else
     n in splice(n,count);;
 assert (digitalRoot 9876 = 3);;
 

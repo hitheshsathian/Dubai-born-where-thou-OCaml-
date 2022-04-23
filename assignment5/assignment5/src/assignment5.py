@@ -36,7 +36,18 @@ def assoc_list (l):
 #################
 
 def buckets (f, l):
-    return []
+    result_l = []
+    for x in l:
+        found_e = False
+        for y in result_l:
+            if f(x,y[0]):
+                y.append(x)
+                found_e = True
+                break
+        else:
+            result_l.append([x])
+    return result_l
+
 
 
 ###################################
@@ -83,7 +94,24 @@ class TreeNode:
 #################
 
 def level_order(root: TreeNode):
-    return []
+    result_l = []
+    if root == None:
+        return 
+    queue = []
+    queue.append(root)
+    while len(queue) > 0:
+        next_queue = []
+        length = len(queue)
+        for x in range(length):
+            node = queue.pop(0)
+            next_queue.append(node.val)
+            if node.left != None:
+                queue.append(node.left)
+            if node.right != None:
+                queue.append(node.right)
+        result_l.append(next_queue)
+    return result_l
+
 
 
 #################

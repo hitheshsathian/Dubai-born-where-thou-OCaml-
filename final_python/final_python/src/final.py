@@ -46,10 +46,21 @@ class Interpreter:
 	in the set is Variable.
 	'''
 	def variables_of_term (self, t : Term) -> set :
-		return set()
+		s1 = set()
+		if isinstance(t, Variable):
+			s1.add(t)
+		elif isinstance(t, Function):
+			for i in t.terms:
+				s1 = s1.union(self.variables_of_term(i))
+		return s1
+
 
 	def variables_of_clause (self, c : Rule) -> set :
-		return set()
+		s1 = set()
+		s1 = self.variables_of_term(c.head)
+		return s1
+
+
 
 
 	'''
